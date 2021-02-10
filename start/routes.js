@@ -19,3 +19,9 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
+
+Route.group(() => {
+  Route.post('/register', 'UserController.register')
+  Route.get('/verify/:token', 'UserController.verifyEmail')
+  Route.post('/webhook', 'WebhookController.handle')
+}).prefix('/api/v1')
